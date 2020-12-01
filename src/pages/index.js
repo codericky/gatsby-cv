@@ -5,9 +5,6 @@ import SEO from "../components/seo"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container, Carousel, Card, CardDeck, Jumbotron, ProgressBar} from "react-bootstrap"
 import styleStyles from "./style.css"
-import myweb from "../images/myweb.jpg"
-import mygame from "../images/mygame.jpg"
-import myapp from "../images/myapp.jpg"
 import Img from "gatsby-image"
 
 const IndexPage = ({data}) => (
@@ -28,7 +25,7 @@ const IndexPage = ({data}) => (
 
   <Carousel.Item>
   <Img fluid={data.discussGatsbyImage.childImageSharp.fluid}
-   alt="This discuss"
+   className="rounded" alt="This discuss"
    />
     <Carousel.Caption>
       <h3 className={styleStyles.h3}>Discussion</h3>
@@ -67,18 +64,19 @@ const IndexPage = ({data}) => (
   <Jumbotron>
   <CardDeck>
   <Card>
-    <Card.Img variant="top" src={myapp} />
-    <Card.Body>
+  <Img fluid={data.myappGatsbyImage.childImageSharp.fluid} />
+    <Card.Body rounded>
       <Card.Title>Build Your App</Card.Title>
       <Card.Text>
         This is a wider card with supporting text below as a natural lead-in to
         additional content. This content is a little bit longer.
       </Card.Text>
     </Card.Body>
-  
   </Card>
+
   <Card>
-    <Card.Img variant="top" src={mygame} />
+  <Img fluid={data.mygameGatsbyImage.childImageSharp.fluid} 
+ />
     <Card.Body>
       <Card.Title>Build Your Game</Card.Title>
       <Card.Text>
@@ -89,7 +87,7 @@ const IndexPage = ({data}) => (
   </Card>
 
   <Card>
-    <Card.Img variant="top" src={myweb} />
+ <Img fluid={data.mywebGatsbyImage.childImageSharp.fluid} />
     <Card.Body>
       <Card.Title>Build Your Web</Card.Title>
       <Card.Text>
@@ -98,7 +96,6 @@ const IndexPage = ({data}) => (
         show that equal height action.
       </Card.Text>
     </Card.Body>
-   
   </Card>
 </CardDeck>
 </Jumbotron>
@@ -172,6 +169,28 @@ query {
     	...GatsbyImageSharpFluid
       }
     }
+  },
+  myappGatsbyImage: file(relativePath: {eq: "myapp.jpg"}) {
+    childImageSharp{
+      fluid(maxWidth: 2000) {
+    	...GatsbyImageSharpFluid
+      }
+    }
+  },
+  mygameGatsbyImage: file(relativePath: {eq: "mygame.jpg"}) {
+    childImageSharp{
+      fluid(maxWidth: 2000) {
+    	...GatsbyImageSharpFluid
+      }
+    }
+  },
+  mywebGatsbyImage: file(relativePath: {eq: "myweb.jpg"}) {
+    childImageSharp{
+      fluid(maxWidth: 2000) {
+    	...GatsbyImageSharpFluid
+      }
+    }
   }
+
 },
 `
