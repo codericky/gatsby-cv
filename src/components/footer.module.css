@@ -1,0 +1,16 @@
+.footer{
+    position: absolute;
+    float: bottom;
+    width: 100%;
+    height: 70px;
+
+    background-color: purple;
+    text-align: center;
+}
+
+.h6 {
+    padding:20px;
+    color:white;
+    margin:0px;
+}
+
